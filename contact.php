@@ -1,5 +1,11 @@
 <?php
 $arrayErrores = array();
+$nombre = '';
+$apellido = '';
+$email = '';
+$asunto = '';
+$mensaje = '';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = trim(htmlspecialchars($_POST['nombre']));
@@ -28,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function mostrarMensaje($nombre, $apellido, $email, $asunto, $mensaje)
+function mostrarMensaje($arrayErrores,$nombre, $apellido, $email, $asunto, $mensaje)
 {
 
     if (!empty($arrayErrores)) {
@@ -38,7 +44,7 @@ function mostrarMensaje($nombre, $apellido, $email, $asunto, $mensaje)
         }
         echo "</ul></div>";
     } elseif ($_SERVER['REQUEST_METHOD']== 'POST') {
-        echo "<div clasvs='alert alert-info'>";
+        echo "<div class='alert alert-info'>";
         echo "First Name: ".htmlspecialchars($nombre). "<br>";
         echo "Last Name: ".htmlspecialchars($apellido). "<br>";
         echo "Email: ".htmlspecialchars($email). "<br>";
